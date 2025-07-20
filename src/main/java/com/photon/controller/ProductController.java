@@ -27,7 +27,9 @@ public class ProductController {
         return productService.create(productDto);
     }
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    // @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE) // http GET http://localhost:8080/api/v1/products
+    // http --stream GET http://localhost:8080/api/v1/products
+    @GetMapping(produces = MediaType.APPLICATION_NDJSON_VALUE)
     Flux<ProductDto> findAll() {
         return productService.findAll().delayElements(Duration.ofSeconds(1));
     }
