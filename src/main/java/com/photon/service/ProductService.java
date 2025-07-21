@@ -46,11 +46,7 @@ public class ProductService {
         }
         return productRepository.findById(id)
                 .switchIfEmpty(Mono.error(new RuntimeException(AppConstant.PRODUCT_NOT_FOUND)))
-                .map(existing -> {
-                    final var updated = productMapper.toProduct(productDto);
-                    updated.setId(id);
-                    return updated;
-                })
+                .map(product -> productMapper.mergeToProduct(productDto, product))
                 .flatMap(productRepository::save)
                 .map(productMapper::toProductDto);
     }
