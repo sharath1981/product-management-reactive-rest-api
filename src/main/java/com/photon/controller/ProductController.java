@@ -3,6 +3,7 @@ package com.photon.controller;
 import com.photon.dto.ProductDto;
 import com.photon.service.ProductService;
 import jakarta.validation.Valid;
+import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -10,8 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.time.Duration;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -27,7 +26,8 @@ public class ProductController {
         return productService.create(productDto);
     }
 
-    // @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE) // http GET http://localhost:8080/api/v1/products
+    // @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE) // http GET
+    // http://localhost:8080/api/v1/products
     // http --stream GET http://localhost:8080/api/v1/products
     @GetMapping(produces = MediaType.APPLICATION_NDJSON_VALUE)
     Flux<ProductDto> findAll() {

@@ -6,6 +6,5 @@ public final class AppConstant {
     public static final String INVALID_INPUT = "Invalid Input";
     public static final String VALIDATION_FAILED = "Validation failed";
 
-    private AppConstant() {
-    }
+    private AppConstant() {}
 }

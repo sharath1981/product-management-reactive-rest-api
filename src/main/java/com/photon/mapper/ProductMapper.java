@@ -19,5 +19,4 @@ public interface ProductMapper {
 
     @Mapping(target = "id", ignore = true)
     Product mergeToProduct(ProductDto dto, @MappingTarget Product product);
-
 }
